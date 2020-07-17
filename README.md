@@ -18,7 +18,9 @@ You’ll notice the robot starts moving and I show two things:
   2. Black circles show a border representing what nodes have been checked. Anything past those black circles has not been checked.
 
 The basic idea is each alogrithm searchs the 8 squares around itself and updates their total cost. 
-Then each algorithm decides what node to check its’ 8 squares surrounding it.
+Then each algorithm decides what node to check its’ 8 squares surrounding it. The program uses two datastructures, hash map and tree map(red black tree).
+This was utilized when searching times needed to be improved. The tree map made searching for the fastest node O(h) and other searches O(logn) but finding and replacing these nodes would be hard since this treemap only sorts and catagorizes by total cost, not the coordinates. Thus, the hashmap makes it easy to search a node based on coordinates and holds only the current total cost. This tells the treemap where to begin looking for the right node. The treemap then double checks for the correct coordinates after it has found the correct total cost node. This limits the search/replace abilities. To be honest it has been a while since I did this project and there are many other good details in the code. 
+The one thing I do regret is the naming of my variables. 
 
 The UCS does a decent job at finding an optimal path as long as it does not need to cross over water. 
 If you click just on the road the nodes searched are minimized compaired to if water needs to be crossed. 
@@ -34,6 +36,3 @@ Now the best… MIA* (My Improved A*)… is really A* and UCS mixed a little.
 It does extremly well on the road. You can see it does not search very many nodes. 
 It’s pretty complicated but what it is basically doing is trying to use a hueristic that says “if every node after this node had a straight route to the destination with the max speed possible, would it be faster than the next checked node and update my total cost if faster (less expensive)”.
 Sometimes this algorithm gets beat in less node searchs by standard A* when going to islands in short distance but long distance islands MIA* wins.
-
-To be honest it has been a while since I did this project and there are many other good details in the code. 
-The one thing I do regret is the naming of my variables. 
